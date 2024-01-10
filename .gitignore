@@ -5,3 +5,9 @@
 /.vs
 /bin
  bin/Debug/
+ *.suo
+*.user
+_ReSharper.*
+bin
+obj
+packages
