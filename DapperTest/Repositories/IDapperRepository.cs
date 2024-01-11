@@ -50,19 +50,24 @@ namespace DapperTest.Repositories
 
         public async Task<Company> GetById(int? id)
         {
-            var sql = "SELECT * FROM COMPANIE WHERE CompanyId = @CompanyId";
-            var company = _db.Query<Company>(sql, new { CompanyId = id }).Single();;
+            var sql = "SELECT * FROM Companies WHERE CompanyId = @CompanyId";
+            var company = _db.Query<Company>(sql, new { @CompanyId = id }).Single();;
             return await Task.FromResult(company);
         }
 
-        public Task Remove(int id)
+        public async Task Remove(int id)
         {
-            throw new NotImplementedException();
+             var sql = "DELETE FROM Companies where CompanyId = @CompanyId";
+            var company = _db.Query<Company>(sql, new { @CompanyId = id });
+            await Task.FromResult(company);
         }
 
-        public Task<Company> Update(Company entity)
+        public async Task<Company> Update(Company entity)
         {
-            throw new NotImplementedException();
+            var sql = "UPDATE Companies SET Name = @Name, Address= @Address, City = @City, State= @State, PostalCode=@PostalCode  WHERE  CompanyId = @CompanyId;";
+
+            _db.Execute(sql, entity);
+;            return await Task.FromResult(entity);
         }
     }
 }
