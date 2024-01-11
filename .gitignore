@@ -15,3 +15,7 @@ obj/*
 packages
 /obj
  
+*/**/bin/Debug
+*/**/bin/Release
+*/**/obj/Debug
+*/**/obj/Release
